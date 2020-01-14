@@ -1,0 +1,69 @@
+<% include partials/header %>
+
+<div class="container" id="main">
+  
+	<div id="text">
+		<h1>Available Shifts</h1>
+		<p><strong>NOTE:</strong><em> All requests must be approved by your supervisor and the workforce management team</em></p>
+	</div>
+
+  <input type="text" id="sortInput" onkeyup="sortTable()" placeholder="Search name, skill, date, or time" title="Search">
+	
+  <table class="table" id="indexTable">
+    <thead>
+      <tr>
+		<td>Trade</td>
+        <td>Requester</td>
+        <td>Skill</td>
+        <td>Date</td>
+        <td>Time</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% requests.forEach(function(request){ %>
+				<% if(currentUser && !currentUser._id.equals("5d97a2d57757050eaa182be8") && request.date > Date.now() || currentUser && currentUser._id.equals("5d97a2d57757050eaa182be8")){ %>
+					<tr class="requestIndex">
+						<% if(request.prefDate !== undefined){ %>
+							<td><img src="/checkmark.png" class="checkmarkImg"></td>
+						<% } else { %>
+							<td></td>
+						<% } %>
+						<td><%= request.author %></td>
+						<td><%= request.skill %></td>
+						<td class="tdDate"><%= request.date.toDateString() %></td>
+						<td><%= request.startTime %> - <%= request.endTime %></td>
+						<td><a href="/requests/<%= request._id %>" class="btn btn-custom btn-sm">view request</a></td>
+					</tr>
+				<% } %>
+      <% }); %>
+    </tbody>
+  </table>
+  
+</div>
+
+
+<script>
+	function sortTable() {
+	  var input, filter, table, tr, td, cell, i, j;
+	  input = document.getElementById("sortInput");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("indexTable");
+	  tr = table.getElementsByTagName("tr");
+	  for (i = 1; i < tr.length; i++) {
+		tr[i].style.display = "none";
+		td = tr[i].getElementsByTagName("td");
+		for (var j = 0; j < td.length; j++) {
+		  cell = tr[i].getElementsByTagName("td")[j];
+		  if (cell) {
+			if (cell.innerText.toUpperCase().indexOf(filter) > -1) {
+			  tr[i].style.display = "";
+			  break;
+			} 
+		  }
+		}
+	  }
+	}
+</script>
+
+<% include partials/footer %>

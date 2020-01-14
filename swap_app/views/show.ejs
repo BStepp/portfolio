@@ -1,0 +1,75 @@
+<% include partials/header %>
+
+<% if(request.prefDate === undefined){ %>
+	<div class="container-fluid" id="showAlert">
+		<h4>NOTE: This agent is not picking up a shift in return</h4>
+	</div>
+<% } %>
+
+<div class="container-fluid d-flex justify-content-center align-items-center" id="showContainer">
+  <div class="jumbotron jumbotron-fluid" id="showJumbo">
+    <div class="container" id="showJumboText">
+     <h1 class="display-4">Shift Details</h1>
+	 <% if(request.prefDate !== undefined){ %>
+       <p class="lead">These are the details for the shift <%= request.author %> would like to trade with you.</p>
+	 <% } else if(request.prefDate === undefined){ %>
+	   <p class="lead">These are the details for the shift <%= request.author %> would like to give to you.</p>
+	 <% } %>
+    </div>
+  </div>
+
+  <div class="container d-flex showTableCont">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Requester</th>
+          <th>Skill</th>
+          <th>Supervisor</th>
+          <th>Current Shift</th>
+          <% if(request.prefDate !== undefined){ %>
+		  	<th>Preferred Pickup Shift</th>
+		  <% } %>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= request.author %></td>
+          <td><%= request.skill %></td>
+          <td><%= request.supervisor %></td>
+          <td><%= request.date.toDateString() %> - <em><%= request.startTime %> to <%= request.endTime %></em></td>
+		  <% if(request.prefDate !== undefined){ %>
+          	<td><%= request.prefDate %> <em><%= request.prefStartTime %> to <%= request.prefEndTime %></em></td>
+		  <% } %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+	
+	<div class="container" id="commentsDiv">
+		<h6>Comments</h6>
+		<p><%= request.comments %></p>
+	</div>
+	
+<div class="container d-flex justify-content-center">
+  <% if(request.prefDate === undefined) { %>
+	  <a id="mailtoButton" class="btn btn-custom" target="_blank"
+		href="https://outlook.office.com/?path=/mail/action/compose&to=placeholderco@placeholderco.com&subject=FORM - Shift Swap Request&body======PLEASE ENTER YOUR INFORMATION BELOW=====%0D%0A%0D%0AMy name: %0D%0AMy skill (T1 US Phones, US Email, International, FBM, T2, DSE, T3, SM): %0D%0AMy supervisor: %0D%0A %0D%0A=====DO NOT EDIT BELOW THIS LINE=====%0D%0ANOT A TRADE - agent is not picking up a shift in return%0D%0AOther agent: <%= request.author %>%0D%0ATheir skill: <%= request.skill %>%0D%0ATheir shift day: <%= request.date.toDateString() %>%0D%0ATheir shift time: <%= request.startTime %> - <%= request.endTime %>%0D%0ATheir supervisor: <%= request.supervisor %>">
+		<strong>click here to pick up a shift from <%= request.author %></strong>
+	  </a>
+  <% } else { %>
+	  <a id="mailtoButton" class="btn btn-custom" target="_blank"
+		href="https://outlook.office.com/?path=/mail/action/compose&to=placeholderco@placeholderco.com&subject=FORM - Shift Swap Request&body======PLEASE ENTER YOUR INFORMATION BELOW=====%0D%0A%0D%0AMy name: %0D%0AMy skill (T1 US Phones, US Email, International, FBM, T2, DSE, T3, SM): %0D%0AThe date I want to give to <%= request.author %>: %0D%0AThe hours I want to give to <%= request.author %>: %0D%0AMy supervisor: %0D%0A %0D%0A=====DO NOT EDIT BELOW THIS LINE=====%0D%0AOther agent: <%= request.author %>%0D%0ATheir skill: <%= request.skill %>%0D%0ATheir shift day: <%= request.date.toDateString() %>%0D%0ATheir shift time: <%= request.startTime %> - <%= request.endTime %>%0D%0ATheir supervisor: <%= request.supervisor %>%0D%0ATheir Day Preference: <%= request.prefDate %>%0D%0ATheir Shift Preference: <%= request.prefStartTime + " - " + request.prefEndTime %>">
+		<strong>click here to request a trade with <%= request.author %></strong>
+	  </a>
+  <% } %>
+</div>
+
+  <% if(currentUser && currentUser._id.equals("5d97a2d57757050eaa182be8")){ %>
+    <form action="/requests/<%= request._id %>?_method=DELETE" method="POST">
+      <button class="btn btn-danger">Delete</button>
+    </form>
+  <% } %>
+
+</div>
+
+<% include partials/footer %>

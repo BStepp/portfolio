@@ -1,0 +1,329 @@
+<% include partials/header %>
+
+<div class="container">
+	  
+<div class="container newContainer">
+  <div class="jumbotron jumbotron-fluid newJumbo">
+    <div class="container">
+     <h1 class="display-4">New Shift Swap Request</h1>
+     <p class="lead">Enter the details of the shift you would like to trade away.</p>
+     <p><strong>Note:</strong><em> Times are in EST. Comments will be visible to anyone who views this request.</em></p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!--MAIN FORM-->
+  <!--CURRENT SHIFT-->
+
+    <div class="newh4">
+      <h4>Your current shift</h4>
+    </div>
+
+  <form action="/requests" method="POST" id="newForm">
+    <div class="form-group newFormElements">
+      <label for="authorId" class="newLabels">First &amp; last name</label>
+      <br>
+      <input type="text" id="authorId" name="author" placeholder="first & last name" required>
+    </div>
+
+    <div class="form-group newFormElements">
+      <label for="skillId" class="newLabels">Skill</label>
+      <select class="form-control" id="skillId" name="skill" required>
+        <option>Skill 1</option>
+        <option>Skill 2</option>
+        <option>Skill 3</option>
+        <option>Skill 4</option>
+        <option>Skill 5</option>
+        <option>Skill 6</option>
+        <option>Skill 7</option>
+				<option>Skill 8</option>
+				<option>Skill 9</option>
+      </select>
+    </div>
+
+    <div class="form-group newFormElements">
+      <label for="supId" class="newLabels">Supervisor</label>
+      <br>
+      <input type="text" id="supId" name="supervisor" placeholder="supervisor" required>
+    </div>
+    
+    <div class="form-group newFormElements">
+      <label for="shiftDate" class="newLabels">Shift date</label>
+      <br>
+      <input class="datepicker" id="shiftDate" type="text" name="date" placeholder="date" required>
+    </div>
+    
+    <div class="form-group newFormElements">
+      <label for="startTimeId" class="newLabels">Shift start</label>
+      <br>
+      <select class="form-control" id="startTimeId" name="startTime" required>
+				<option>7:00 a.m.</option>
+				<option>7:30 a.m.</option>
+				<option>8:00 a.m.</option>
+				<option>8:30 a.m.</option>
+				<option>9:00 a.m.</option>
+				<option>9:30 a.m.</option>
+				<option>10:00 a.m.</option>
+				<option>10:30 a.m.</option>
+				<option>11:00 a.m.</option>
+				<option>11:30 a.m.</option>
+				<option>12:00 p.m.</option>
+				<option>12:30 p.m.</option>
+				<option>1:00 p.m.</option>
+				<option>1:30 p.m.</option>
+				<option>2:00 p.m.</option>
+				<option>2:30 p.m.</option>
+				<option>3:00 p.m.</option>
+				<option>3:30 p.m.</option>
+				<option>4:00 p.m.</option>
+				<option>4:30 p.m.</option>
+				<option>5:00 p.m.</option>
+				<option>5:30 p.m.</option>
+				<option>6:00 p.m.</option>
+				<option>6:30 p.m.</option>
+				<option>7:00 p.m.</option>
+				<option>7:30 p.m.</option>
+				<option>8:00 p.m.</option>
+				<option>8:30 p.m.</option>
+				<option>9:00 p.m.</option>
+				<option>9:30 p.m.</option>
+				<option>10:00 p.m.</option>
+				<option>10:30 p.m.</option>
+				<option>11:00 p.m.</option>
+	  	</select>
+    </div>
+
+    <div class="form-group newFormElements">
+      <label for="endTimeId" class="newLabels">Shift end</label>
+      <br>
+      <select class="form-control" id="endTimeId" name="endTime" required>
+				<option>7:00 a.m.</option>
+				<option>7:30 a.m.</option>
+				<option>8:00 a.m.</option>
+				<option>8:30 a.m.</option>
+				<option>9:00 a.m.</option>
+				<option>9:30 a.m.</option>
+				<option>10:00 a.m.</option>
+				<option>10:30 a.m.</option>
+				<option>11:00 a.m.</option>
+				<option>11:30 a.m.</option>
+				<option>12:00 p.m.</option>
+				<option>12:30 p.m.</option>
+				<option>1:00 p.m.</option>
+				<option>1:30 p.m.</option>
+				<option>2:00 p.m.</option>
+				<option>2:30 p.m.</option>
+				<option>3:00 p.m.</option>
+				<option>3:30 p.m.</option>
+				<option>4:00 p.m.</option>
+				<option>4:30 p.m.</option>
+				<option>5:00 p.m.</option>
+				<option>5:30 p.m.</option>
+				<option>6:00 p.m.</option>
+				<option>6:30 p.m.</option>
+				<option>7:00 p.m.</option>
+				<option>7:30 p.m.</option>
+				<option>8:00 p.m.</option>
+				<option>8:30 p.m.</option>
+				<option>9:00 p.m.</option>
+				<option>9:30 p.m.</option>
+				<option>10:00 p.m.</option>
+				<option>10:30 p.m.</option>
+				<option>11:00 p.m.</option>
+			</select>
+    </div>
+	
+	<div class="container">
+		<h6><strong>Pick up a shift in return?</strong></h6>
+		<label for="yesCheck" class="newLabels">Yes</label>
+		<input type="radio" class="newFormElements prefRadio" id="yesCheck" name="yesno" value="checked" onclick="javascript:yesnoCheck();" checked>
+
+		<label for="noCheck" class="newLabels">No</label>
+		<input type="radio" class="newFormElements prefRadio" id="noCheck" name="yesno" onclick="javascript:yesnoCheck();">
+	</div>
+
+    
+    <hr>
+    
+  <!--PICKUP PREFERENCE-->
+
+    <div id="pickupPreference">
+      <div class="newh4 prefClass">
+        <h4>Pickup preference</h4>
+				<p><em>(must be within same week)</em></p>
+      </div>
+      
+      <div class="form-group newFormElements prefClass">
+        <label for="swapPrefDate" class="newLabels">Available days</label>
+        <br>
+        <select class="form-control" id="swapPrefDate" name="prefDate" required>
+					<option>Monday or Saturday</option>
+					<option>Monday or Sunday</option>
+					<option>Tueday or Saturday</option>
+					<option>Tuesday or Sunday</option>
+					<option>Wednesday or Saturday</option>
+					<option>Wednesday or Sunday</option>
+					<option>Thursday or Saturday</option>
+					<option>Thursday or Sunday</option>
+					<option>Friday or Saturday</option>
+					<option>Friday or Sunday</option>
+					<option>Saturday or Sunday</option>
+					<option>Monday</option>
+					<option>Tuesday</option>
+					<option>Wednesday</option>
+					<option>Thursday</option>
+					<option>Friday</option>
+					<option>Saturday</option>
+					<option>Sunday</option>
+				</select>
+      </div>
+      
+      <div class="form-group newFormElements prefClass">
+        <label for="swapPrefStart" class="newLabels">Shift start</label>
+        <br>
+				<select class="form-control prefClass" id="swapPrefStart" name="prefStartTime" required>
+					<option>Any start time</option>
+					<option>7:00 a.m.</option>
+					<option>7:30 a.m.</option>
+					<option>8:00 a.m.</option>
+					<option>8:30 a.m.</option>
+					<option>9:00 a.m.</option>
+					<option>9:30 a.m.</option>
+					<option>10:00 a.m.</option>
+					<option>10:30 a.m.</option>
+					<option>11:00 a.m.</option>
+					<option>11:30 a.m.</option>
+					<option>12:00 p.m.</option>
+					<option>12:30 p.m.</option>
+					<option>1:00 p.m.</option>
+					<option>1:30 p.m.</option>
+					<option>2:00 p.m.</option>
+					<option>2:30 p.m.</option>
+					<option>3:00 p.m.</option>
+					<option>3:30 p.m.</option>
+					<option>4:00 p.m.</option>
+					<option>4:30 p.m.</option>
+					<option>5:00 p.m.</option>
+					<option>5:30 p.m.</option>
+					<option>6:00 p.m.</option>
+					<option>6:30 p.m.</option>
+					<option>7:00 p.m.</option>
+					<option>7:30 p.m.</option>
+					<option>8:00 p.m.</option>
+					<option>8:30 p.m.</option>
+					<option>9:00 p.m.</option>
+					<option>9:30 p.m.</option>
+					<option>10:00 p.m.</option>
+					<option>10:30 p.m.</option>
+					<option>11:00 p.m.</option>
+				</select>
+      </div>
+      
+      <div class="form-group newFormElements prefClass">
+        <label for="swapPrefEnd" class="newLabels">Shift end</label>
+        <br>
+				<select class="form-control prefClass" id="swapPrefEnd" name="prefEndTime" required>
+					<option>Any end time</option>
+					<option>7:00 a.m.</option>
+					<option>7:30 a.m.</option>
+					<option>8:00 a.m.</option>
+					<option>8:30 a.m.</option>
+					<option>9:00 a.m.</option>
+					<option>9:30 a.m.</option>
+					<option>10:00 a.m.</option>
+					<option>10:30 a.m.</option>
+					<option>11:00 a.m.</option>
+					<option>11:30 a.m.</option>
+					<option>12:00 p.m.</option>
+					<option>12:30 p.m.</option>
+					<option>1:00 p.m.</option>
+					<option>1:30 p.m.</option>
+					<option>2:00 p.m.</option>
+					<option>2:30 p.m.</option>
+					<option>3:00 p.m.</option>
+					<option>3:30 p.m.</option>
+					<option>4:00 p.m.</option>
+					<option>4:30 p.m.</option>
+					<option>5:00 p.m.</option>
+					<option>5:30 p.m.</option>
+					<option>6:00 p.m.</option>
+					<option>6:30 p.m.</option>
+					<option>7:00 p.m.</option>
+					<option>7:30 p.m.</option>
+					<option>8:00 p.m.</option>
+					<option>8:30 p.m.</option>
+					<option>9:00 p.m.</option>
+					<option>9:30 p.m.</option>
+					<option>10:00 p.m.</option>
+					<option>10:30 p.m.</option>
+					<option>11:00 p.m.</option>
+				</select>
+      </div>
+
+      <div class="form-group newFormElements prefClass">
+        <label for="swapPrefComments" class="newLabels">Comments</label>
+        <br>
+        <input type="text" class="prefClass" id="swapPrefComments" name="comments" placeholder="comments">
+      </div>
+      
+      <hr>
+    </div>
+    
+    <button class="btn btn-success newSubmit">Submit</button>
+  </form>
+
+</div>
+
+
+<script type="text/javascript">
+  // DATEPICKER SETTINGS
+  $("#shiftDate").datepicker({
+    minDate: 5,
+    firstDay: 1,
+  });
+</script>
+
+<script type="text/javascript">
+  // DATEPICKER SETTINGS
+  $("#swapPrefDate").datepicker({
+    minDate: 5,
+    firstDay: 1,
+    });
+</script>
+
+<!-- Clear initial values from form fields -->
+<script type="text/javascript">
+	document.getElementById("skillId").value = null;
+	document.getElementById("startTimeId").value = null;
+	document.getElementById("endTimeId").value = null;
+	document.getElementById("swapPrefDate").value = null;
+	document.getElementById("swapPrefStart").value = null;
+	document.getElementById("swapPrefEnd").value = null;
+</script>
+
+<!-- Only show pickup preference portion of form if the option is selected -->
+<script type="text/javascript">
+	function yesnoCheck() {
+		if(document.getElementById("yesCheck").checked) {
+			document.getElementById("swapPrefDate").value = null;
+			document.getElementById("swapPrefStart").value = null;
+			document.getElementById("swapPrefEnd").value = null;
+			document.getElementById("swapPrefDate").required = true;
+			document.getElementById("swapPrefStart").required = true;
+			document.getElementById("swapPrefEnd").required = true;
+			document.getElementById("pickupPreference").style.display = "block";
+		} else if(document.getElementById("noCheck").checked) {
+			document.getElementById("swapPrefDate").value = null;
+			document.getElementById("swapPrefDate").required = false;
+			document.getElementById("swapPrefStart").value = null;
+			document.getElementById("swapPrefStart").required = false;
+			document.getElementById("swapPrefEnd").value = null;
+			document.getElementById("swapPrefEnd").required = false;
+			document.getElementById("swapPrefComments").value = null;
+			document.getElementById("pickupPreference").style.display = "none";
+		}
+	}
+</script>
+
+<% include partials/footer %>
