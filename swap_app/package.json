@@ -1,7 +1,7 @@
 {
-  "name": "zuswap",
+  "name": "swapApp",
   "version": "1.0.0",
-  "description": "## Workflow Idea 1 ## * Users -do not- need to log in * Users can view requests   * If they want to accept one, they need to send email to CCTimeOffRequest and cc their supervisor and the requester * Admin can log in to view pending requests and delete ones that have been approved, or ones that have already passed * Pros   * Doesn't involve users having to create a login and remember a password   * Doesn't involve a dev team having to connect app to existing single sign-on   * Much quicker to produce, more stable   * Users cannot go in and accidentally delete requests - all control is in the admin's hands * Cons   * Less control as a user   * Less automated functionality",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
