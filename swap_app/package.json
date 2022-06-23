@@ -17,7 +17,7 @@
     "jquery": "^3.4.1",
     "jquery-ui": "^1.12.1",
     "js-datepicker": "^5.0.3",
-    "jsdom": "^15.1.1",
+    "jsdom": "^16.5.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.7.3",
     "passport": "^0.4.0",
